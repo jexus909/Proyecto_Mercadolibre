@@ -18,4 +18,5 @@ register_routes(api)
 logger.info("API inicializada y rutas registradas.")  # Agregamos un mensaje de inicio
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
+
