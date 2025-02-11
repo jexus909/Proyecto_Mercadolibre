@@ -1,0 +1,54 @@
+
+tags:
+  - Endpoint
+description: "Obtiene los tipos de un Pokémon por su nombre."
+
+parameters:
+  - name: Authorization
+    in: header
+    type: string
+    required: true
+    description: "Token de autenticación en formato Bearer <token>"
+
+  - name: name
+    in: path
+    type: string
+    required: true
+    description: "Nombre del Pokémon."
+
+security:
+  - Bearer: []
+
+responses:
+  200:
+    description: "Tipos del Pokémon obtenidos con éxito."
+    schema:
+      type: object
+      properties:
+        pokemon:
+          type: string
+        types:
+          type: array
+          items:
+            type: string
+  401:
+    description: "No autorizado."
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Token inválido o expirado."
+
+  404:
+    description: "Pokémon no encontrado."
+
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: "Introduce el token en formato 'Bearer <token>'"
+
+
+

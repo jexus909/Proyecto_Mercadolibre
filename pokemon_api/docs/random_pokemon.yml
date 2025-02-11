@@ -1,0 +1,53 @@
+tags:
+  - Endpoint
+description: "Obtiene un Pokémon aleatorio de un tipo específico."
+
+parameters:
+  - name: Authorization
+    in: header
+    type: string
+    required: true
+    description: "Token de autenticación en formato Bearer <token>"
+
+  - name: type_name
+    in: path
+    type: string
+    required: true
+    description: "Tipo de Pokémon (ejemplo: fire, water, rock)."
+
+security:
+  - Bearer: []
+
+responses:
+  200:
+    description: "Pokémon aleatorio obtenido con éxito."
+    schema:
+      type: object
+      properties:
+        type:
+          type: string
+        random_pokemon:
+          type: string
+  401:
+    description: "No autorizado."
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Token inválido o expirado."
+  404:
+    description: "Pokémon no encontrado."
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Tipo de Pokémon no encontrado."
+
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: "Introduce el token en formato 'Bearer <token>'"

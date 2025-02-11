@@ -6,6 +6,8 @@ from flask import request
 from firebase_admin import auth
 from functools import wraps
 from logger_config import logger  # Importamos el logger desde el módulo
+from flasgger import Swagger, swag_from
+
 
 def token_required(f):
     """Middleware para validar el token JWT de Firebase."""
@@ -44,6 +46,7 @@ def token_required(f):
 class PokemonType(Resource):
     """Obtiene el tipo del Pokemon desde la PokéAPI."""
     @token_required
+    @swag_from("./docs/pokemon_type.yml")
     def get(self, name):
         logger.info(f"Solicitud de tipo de Pokemon para: {name} por usuario {request.user.get('uid')}")
         url = f"https://pokeapi.co/api/v2/pokemon/{name.lower()}"
@@ -62,6 +65,7 @@ class PokemonType(Resource):
 class RandomPokemonByType(Resource):
     """Obtiene un Pokemon aleatorio de un tipo específico."""
     @token_required
+    @swag_from("./docs/random_pokemon.yml")
     def get(self, type_name):
         logger.info(f"Solicitud de Pokemon aleatorio para el tipo: {type_name} por usuario {request.user.get('uid')}")
         url = f"https://pokeapi.co/api/v2/type/{type_name.lower()}"
@@ -86,6 +90,7 @@ class RandomPokemonByType(Resource):
 class LongestPokemonNameByType(Resource):
     """Encuentra el Pokemon con el nombre mas largo de un tipo específico."""
     @token_required
+    @swag_from("./docs/longest_pokemon.yml")
     def get(self, long_name):
         logger.info(f"Solicitud de Pokemon con nombre mas largo para el tipo: {long_name} por usuario {request.user.get('uid')}")
         url = f"https://pokeapi.co/api/v2/type/{long_name.lower()}"

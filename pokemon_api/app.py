@@ -4,6 +4,8 @@ from flask import Flask
 from flask_restful import Api
 from routes import register_routes
 from logger_config import logger  # Importamos el logger desde el módulo
+from flasgger import Swagger, swag_from
+
 
 
 # Cargar credenciales de Firebase
@@ -12,6 +14,13 @@ firebase_admin.initialize_app(cred)
 
 app = Flask(__name__)
 api = Api(app)
+
+# Configurar Swagger
+app.config['SWAGGER'] = {
+    'title': 'API Pokemon',
+    'uiversion': 3  
+}
+swagger = Swagger(app)  # Inicializamos Swagger
 
 # Registrar rutas
 register_routes(api)
