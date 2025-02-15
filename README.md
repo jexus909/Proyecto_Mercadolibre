@@ -14,9 +14,9 @@ La API está protegida con autenticación basada en Firebase y proporciona docum
 ## NOTA
 Caracteristicas de cada rama:
 1. Master: Solo incluye el consumo de los endpoints
-2. Se implementa la configuración de la autenticación y validación del token JWT usando firebase
-3. Se crea la configuración de loggin de las actividades de los endpoint y eventos relevantes del API
-4. Documentación: ESTA Rama tiene el proyecto completo con la integración de Firebase, la configuración de los logs, y la creación de la documentación
+2. Autenticacion: Se implementa la configuración de la autenticación y validación del token JWT usando firebase
+3. Trazabilidad: Se crea la configuración de loggin de las actividades de los endpoint y eventos relevantes del API
+4. Documentación: Esta rama tiene el proyecto completo con la integración de Firebase, la configuración de los logs, y la creación de la documentación
 
 ## Instalación
 1. Clona este repositorio:
