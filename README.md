@@ -12,6 +12,7 @@ Logs de actividad en archivos rotativos.
 Autenticación con Firebase JWT.
 Documentación con Swagger.
 ## Digrama de arbol del proyecto
+```sh
 Proyecto-API
 ├── app.py
 ├── logger_config.py
@@ -26,7 +27,7 @@ Proyecto-API
     └── app.log
 └──Dokerfile
 └──__init__.py
-
+```
 ## Instalación
 
 1. Crea y activa un entorno virtual:
