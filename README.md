@@ -136,6 +136,23 @@ Se registran eventos como intentos de acceso sin token, autenticaciones exitosas
 ## Autor
 - **Jesus Beltran** - [GitHub](https://github.com/jexus909)
 
+## Implementar Docker
+Debes previamente tener instalado docker
+busca dentro de la carpeta Proyecto-API el archivo Dockerfile
+ejecuta en un cmd para windows o una shell para unix
+```
+docker build -t nombre_de_tu_imagen .
+
+```
+Luego revisa que se hubiera creado de forma exitosa la imagen:
+
+```
+docker images
+```
+Dado que necesitamos que el docker permita la conexión con la maquina local debemos ejecutar el siguiente comando para mapear el puerto 
+```
+docker run -p 5000:5000 nombre_de_tu_imagen
+```
 ---
 Este proyecto está basado en la PokéAPI para la obtención de datos.
 
